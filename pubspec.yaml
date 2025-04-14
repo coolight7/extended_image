@@ -9,17 +9,20 @@ topics:
   - photo-view
   - editor
   - slide-out
+publish_to: 'none'
 
 environment:
   sdk: ^3.7.0
   flutter: ">=3.29.0"
 
 dependencies:
-  extended_image_library: ^5.0.0
+  extended_image_library: 
+    path: ../extended_image_library
   flutter:
     sdk: flutter
   meta: ^1.7.0
   vector_math: ^2.1.4
+
 dependency_overrides:
   # extended_image_library:
   #   path: ../extended_image_library
