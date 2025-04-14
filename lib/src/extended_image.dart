@@ -30,6 +30,7 @@ class ExtendedImage extends StatefulWidget {
     this.opacity,
     this.colorBlendMode,
     this.fit,
+    this.playGif = true,
     this.alignment = Alignment.center,
     this.repeat = ImageRepeat.noRepeat,
     this.centerSlice,
@@ -204,6 +205,7 @@ class ExtendedImage extends StatefulWidget {
     this.opacity,
     this.colorBlendMode,
     this.fit,
+    this.playGif = true,
     this.alignment = Alignment.center,
     this.repeat = ImageRepeat.noRepeat,
     this.centerSlice,
@@ -303,6 +305,7 @@ class ExtendedImage extends StatefulWidget {
     this.opacity,
     this.colorBlendMode,
     this.fit,
+    this.playGif = true,
     this.alignment = Alignment.center,
     this.repeat = ImageRepeat.noRepeat,
     this.centerSlice,
@@ -393,6 +396,7 @@ class ExtendedImage extends StatefulWidget {
     this.opacity,
     this.colorBlendMode,
     this.fit,
+    this.playGif = true,
     this.alignment = Alignment.center,
     this.repeat = ImageRepeat.noRepeat,
     this.centerSlice,
@@ -461,6 +465,7 @@ class ExtendedImage extends StatefulWidget {
     this.opacity,
     this.colorBlendMode,
     this.fit,
+    this.playGif = true,
     this.alignment = Alignment.center,
     this.repeat = ImageRepeat.noRepeat,
     this.centerSlice,
@@ -659,6 +664,9 @@ class ExtendedImage extends StatefulWidget {
   final double? height;
 
   final BoxConstraints? constraints;
+
+  /// 播放gif
+  final bool playGif;
 
   /// If non-null, this color is blended with each image pixel using [colorBlendMode].
   final Color? color;
@@ -1250,6 +1258,9 @@ class _ExtendedImageState extends State<ExtendedImage>
   }
 
   void _handleImageFrame(ImageInfo imageInfo, bool synchronousCall) {
+    if (false == widget.playGif && _frameNumber != null) {
+      return;
+    }
     setState(() {
       _replaceImage(info: imageInfo);
       _loadState = LoadState.completed;
