@@ -1258,7 +1258,10 @@ class _ExtendedImageState extends State<ExtendedImage>
   }
 
   void _handleImageFrame(ImageInfo imageInfo, bool synchronousCall) {
-    if (false == widget.playGif && _frameNumber != null) {
+    if (false == widget.playGif &&
+        _frameNumber != null &&
+        LoadState.completed == _loadState) {
+      // 触发异常时允许刷新
       return;
     }
     setState(() {
