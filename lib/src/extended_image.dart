@@ -1302,9 +1302,9 @@ class _ExtendedImageState extends State<ExtendedImage>
 
   void _replaceImage({required ImageInfo? info}) {
     final ImageInfo? oldImageInfo = _imageInfo;
-    SchedulerBinding.instance.addPostFrameCallback(
-      (_) => oldImageInfo?.dispose(),
-    );
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      oldImageInfo?.dispose();
+    });
     _imageInfo = info;
   }
 
